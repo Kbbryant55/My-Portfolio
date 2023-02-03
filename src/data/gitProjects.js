@@ -5,7 +5,7 @@ export const gitProjects = [
     label: "My-Portfolio",
     description:
       "This portfolio site's repo. I used NextJS to create this site, tailwind for a CSS framework, and deployed it on Heroku.",
-    gitUrl: "https://github.com/Kbbryant55/Tier-List",
+    gitUrl: "https://github.com/Kbbryant55/My-Portfolio",
   },
   {
     id: 2,

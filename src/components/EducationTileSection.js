@@ -12,7 +12,6 @@ const EducationTileSection = () => {
         <div className="pt-10 text-2xl">
           <h2>University of California, Santa Cruz</h2>
           <h2>Bachelor of Science, Computer Science</h2>
-          <h2>Graduated: 2015</h2>
         </div>
       </div>
     </div>
