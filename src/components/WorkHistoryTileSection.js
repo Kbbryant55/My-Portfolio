@@ -14,8 +14,12 @@ const WorkHistoryTileSection = ({ job }) => {
           <p>{job.duration}</p>
         </div>
         <ul>
-          {job.responsibilities.map((task) => {
-            return <li className="text-white">{task}</li>;
+          {job.responsibilities.map((task, index) => {
+            return (
+              <li key={`${index}-${task}`} className="text-white">
+                {task}
+              </li>
+            );
           })}
         </ul>
       </div>
