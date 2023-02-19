@@ -1,17 +1,22 @@
 .header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  color: black;
-  margin: 0px 100px;
-
   /* On screens that are 600px or less, set the background color to olive */
-  @media screen and (max-width: 500px) {
-    margin: 0 25px;
-  }
 
-  > h1 {
+  .menuItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 13px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+
+    .label {
+      padding: 25px 18px 8px;
+    }
+    .label:hover {
+      color: theme("colors.secondary");
+    }
+
     .border {
       background-color: theme("colors.secondary");
       height: 3px;
@@ -25,49 +30,19 @@
       }
     }
   }
+}
 
-  > div {
-    display: flex;
-    align-items: center;
+.socialMedia {
+  color: white;
+  padding: 0 10;
+}
 
-    .menuItem {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-bottom: 13px;
-      cursor: pointer;
-      color: white;
-      text-decoration: none;
-
-      .label {
-        padding: 25px 18px 8px;
-      }
-      .label:hover {
-        color: theme("colors.secondary");
-      }
-
-      .border {
-        background-color: theme("colors.secondary");
-        height: 3px;
-        width: 0;
-        transition: width 0.5s ease;
-      }
-
-      &:hover {
-        .border {
-          width: 100%;
-        }
-      }
-    }
-
-    button {
-      margin-left: 20px;
-    }
-  }
+.socialMedia:hover {
+  color: theme("colors.secondary");
 }
 
 .Hamburger_Menu__Container {
-  background-color: white;
+  background-color: theme("colors.light");
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -85,7 +60,7 @@
     }
 
     a:hover {
-      color: #f16722;
+      color: theme("colors.secondary");
     }
   }
 }
