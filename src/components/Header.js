@@ -53,37 +53,20 @@ const Header = () => {
           <a
             href="https://www.facebook.com/kenny.willoughby.9"
             target="facebook"
-            className={styles.socialMedia}
           >
-            <IoLogoFacebook
-              size={30}
-              onClick={() => setNavBarOpen(!navBarOpen)}
-              className={styles.socialMedia}
-            />
+            <IoLogoFacebook size={30} className={styles.socialMedia} />
           </a>
           <a href="https://twitter.com/KWilloughby55" target="twitter">
-            <IoLogoTwitter
-              size={30}
-              onClick={() => setNavBarOpen(!navBarOpen)}
-              className={styles.socialMedia}
-            />
+            <IoLogoTwitter size={30} className={styles.socialMedia} />
           </a>
           <a
             href="https://www.linkedin.com/in/kenwilloughby/"
             target="linkedin"
           >
-            <IoLogoLinkedin
-              size={30}
-              onClick={() => setNavBarOpen(!navBarOpen)}
-              className={styles.socialMedia}
-            />
+            <IoLogoLinkedin size={30} className={styles.socialMedia} />
           </a>
           <a href="https://www.instagram.com/kennywillough/" target="instagram">
-            <IoLogoInstagram
-              size={30}
-              onClick={() => setNavBarOpen(!navBarOpen)}
-              className={styles.socialMedia}
-            />
+            <IoLogoInstagram size={30} className={styles.socialMedia} />
           </a>
         </div>
       </div>
