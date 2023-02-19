@@ -13,14 +13,14 @@ const AboutMeTileSection = () => {
           I am a Senior Software Developer who is comfortable working with both
           front-end and back-end technologies. My expertise, however, lies in
           both React web development and React Native mobile applications. I
-          have led a team of four developers in order to redesign a website from
-          the ground up and mentored junior developers along the way. I am a
-          self starter that is always eager to learn the latest technologies and
-          market trends, and have studied hours worth of content from paid
-          courses on Udemy and Pluralsight. I have acquired an excellent
+          have led a team of four developers to redesign a website from
+          the ground up, and mentored junior developers along the way. I am a
+          self-starter who is always eager to learn the latest technologies and
+          market trends, and have studied hours of content from paid
+          courses on Udemy and Pluralsight. Over the years, I have built an excellent
           reputation for resolving problems, improving customer satisfaction,
-          and driving overall operational improvements. I am also known for
-          freelancing in my spare time.
+          and driving overall operational improvements. In my spare time, I enjoy playing and creating videogames, and
+    freelancing for a virtual reality startup.
         </p>
       </div>
     </div>

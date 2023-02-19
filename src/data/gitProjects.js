@@ -4,7 +4,7 @@ export const gitProjects = [
     imgSrc: "React-icon.svg.png",
     label: "My Portfolio",
     description:
-      "This portfolio site's repo. I used NextJS to create this site, tailwind for a CSS framework, and deployed it on Heroku.",
+      "This current websites's Git repo. I used NextJS to create this site, tailwind for a CSS framework, and deployed it on Heroku.",
     gitUrl: "https://github.com/Kbbryant55/My-Portfolio",
   },
   {
@@ -12,7 +12,7 @@ export const gitProjects = [
     imgSrc: "GameTierList.png",
     label: "Game Tier List",
     description:
-      "This a video game tier list of that you can drag and drop to rank.  This project uses TypeScript and Tailwind.",
+      "This is a video game tier list that you can drag and drop to rank.  This project uses TypeScript and Tailwind.",
     gitUrl: "https://github.com/Kbbryant55/Tier-List",
   },
   {

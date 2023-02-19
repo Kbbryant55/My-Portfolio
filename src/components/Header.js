@@ -89,7 +89,7 @@ const Header = () => {
               <NavMenuItem text={"Home"} url={"/"} />
               <NavMenuItem text={"Resume"} url={"/resume"} />
               <NavMenuItem text={"Projects"} url={"/projects"} />
-              <NavMenuItem text={"Contact Me"} url={"/contact"} />
+              <NavMenuItem text={"Contact"} url={"/contact"} />
             </>
           )}
         </div>
@@ -107,7 +107,7 @@ const Header = () => {
             <NavMenuItem text={"Home"} url={"/"} />
             <NavMenuItem text={"Resume"} url={"/resume"} />
             <NavMenuItem text={"Projects"} url={"/projects"} />
-            <NavMenuItem text={"Contact Me"} url={"/contact"} />
+            <NavMenuItem text={"Contact"} url={"/contact"} />
           </div>
         </div>
       )}
