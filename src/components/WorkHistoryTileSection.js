@@ -2,7 +2,7 @@ import React from "react";
 
 const WorkHistoryTileSection = ({ job }) => {
   return (
-    <div className="container my-10 pr-4 flex flex-row phone:flex-col phone:items-center bg-secondary rounded-3xl shadow-xl">
+    <div className="container my-10 pr-4 flex flex-row phone:flex-col phone:items-center bg-secondary rounded-3xl shadow-3xl">
       <div className=" w-1/3 flex flex-col items-center justify-center text-white border-r-2 border-[#022C3A] phone:border-r-0 phone:border-b-2 pt-10 ">
         <h2 className="text-white text-3xl">{job.companyTitle}</h2>
         <p>{job.location}</p>

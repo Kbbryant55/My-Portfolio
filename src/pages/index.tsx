@@ -10,9 +10,9 @@ export default function Home() {
       <main className={styles.main}>
         <AboutMeTileSection />
         <EducationTileSection />
-        <div className="container mt-16 pr-4 flex flex-row bg-secondary rounded-3xl h-1/2">
+        <div className="container mt-16 flex flex-row bg-secondary rounded-3xl h-1/2 shadow-3xl">
           <div className="flex w-full flex-col">
-            <h1 className="text-left pl-10">Top Skills</h1>
+            <h1 className="text-left pl-10 pt-10">Top Skills</h1>
             <div className="flex flex-row flex-wrap	mt-[4rem] h-3/4 justify-center">
               {skills.map((skill, index) => {
                 return (

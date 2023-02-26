@@ -49,16 +49,7 @@ const Header = () => {
   return (
     <div className={styles.header}>
       <div className="flex justify-end px-20 pt-10 phone:px-5">
-        <div className={"flex flex-row justify-between w-1/3 phone:w-full"}>
-          <a
-            href="https://www.facebook.com/kenny.willoughby.9"
-            target="facebook"
-          >
-            <IoLogoFacebook size={30} className={styles.socialMedia} />
-          </a>
-          <a href="https://twitter.com/KWilloughby55" target="twitter">
-            <IoLogoTwitter size={30} className={styles.socialMedia} />
-          </a>
+        <div className={"flex flex-row justify-between w-[6rem] "}>
           <a
             href="https://www.linkedin.com/in/kenwilloughby/"
             target="linkedin"

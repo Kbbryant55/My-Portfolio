@@ -5,7 +5,7 @@ const ProjectTile = ({ label, imgSrc, description, gitUrl }) => {
   return (
     <a
       href={gitUrl}
-      className="bg-secondary rounded-xl shadow-2xl hover:bg-primary m-10 w-[20rem] "
+      className="bg-secondary rounded-xl hover:bg-primary m-10 w-[20rem] shadow-3xl"
     >
       <div className="p-3 flex flex-col justify-center items-center text-white">
         <div className="w-[200px] h-[150px] relative">

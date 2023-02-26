@@ -38,6 +38,9 @@ module.exports = {
 
         desktop: { max: "1440px" },
       },
+      boxShadow: {
+        "3xl": "0 35px 60px -15px rgba(0, 0, 0, 0.75)",
+      },
     },
   },
   plugins: [],

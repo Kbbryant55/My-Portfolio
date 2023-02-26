@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const EducationTileSection = () => {
   return (
-    <div className="container mt-10 pr-4 flex flex-row phone:flex-col phone:items-center bg-secondary rounded-3xl h-4/5">
+    <div className="container mt-10 pr-4 pt-10 flex flex-row phone:flex-col phone:items-center bg-secondary rounded-3xl h-4/5 shadow-3xl">
       <div className=" p-[.75rem] ">
         <Image
           className="rounded-3xl"
