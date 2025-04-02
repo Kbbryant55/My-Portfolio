@@ -3,7 +3,11 @@ import Header from "./Header";
 import Head from "next/head";
 import styles from "@/styles/Home.module.scss";
 
-const Layout = (props) => {
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+const Layout = (props: LayoutProps) => {
   return (
     <>
       <Head>

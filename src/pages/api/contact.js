@@ -4,41 +4,44 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const contact = (request, response) => {
-  const password = process.env.PASSWORD;
-  const dummyEmail = process.env.DUMMYEMAIL;
-  const email = process.env.EMAIL;
+export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ message: "Method not allowed" });
+  }
 
-  const transporter = nodemailer.createTransport({
-    port: 465,
-    host: "smtp.gmail.com",
-    auth: {
-      user: dummyEmail,
-      pass: password,
-    },
-    secure: true,
-  });
+  try {
+    const password = process.env.PASSWORD;
+    const dummyEmail = process.env.DUMMYEMAIL;
+    const email = process.env.EMAIL;
 
-  const mailData = {
-    from: dummyEmail,
-    to: email,
-    subject: `Message From ${request.body.contactName}`,
-    text:
-      request.body.contactMessage +
-      " | Sent from: " +
-      request.body.contactEmail +
-      " | Call at: " +
-      request.body.contactPhone,
-    html: `<div>${request.body.contactMessage}</div><p>Sent from:
-    ${request.body.contactEmail}</p><p>Call at ${request.body.contactPhone} </p>`,
-  };
-  transporter.sendMail(mailData, (err, info) => {
-    if (err) console.log(err);
-    else console.log(info);
-  });
-  response.status(200);
+    const transporter = nodemailer.createTransport({
+      port: 465,
+      host: "smtp.gmail.com",
+      auth: {
+        user: dummyEmail,
+        pass: password,
+      },
+      secure: true,
+    });
 
-  console.log(request.body);
-};
+    const mailData = {
+      from: dummyEmail,
+      to: email,
+      subject: `Message From ${req.body.contactName}`,
+      text:
+        req.body.contactMessage +
+        " | Sent from: " +
+        req.body.contactEmail +
+        " | Call at: " +
+        req.body.contactPhone,
+      html: `<div>${req.body.contactMessage}</div><p>Sent from:
+      ${req.body.contactEmail}</p><p>Call at ${req.body.contactPhone} </p>`,
+    };
+    await transporter.sendMail(mailData);
 
-export default contact;
+    return res.status(200).json({ message: "Message received successfully" });
+  } catch (error) {
+    console.error("Error processing contact form:", error);
+    return res.status(500).json({ message: "Error processing your request" });
+  }
+}

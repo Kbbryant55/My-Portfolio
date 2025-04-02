@@ -1,10 +1,42 @@
 export const workHistory = [
   {
+    id: "0",
+    companyTitle: "Major League Baseball",
+    positionTitle: "Senior Software Engineer",
+    duration: "5/23 - Current",
+    location: "El Segundo, CA",
+    responsibilities: [
+      "Delivered high-quality features for ticketing platforms used by millions of baseball fans, driving exceptional user experiences under high-traffic conditions",
+      "Authored clean, maintainable, and efficient code in JavaScript, HTML, and CSS, leveraging modern frameworks such as ReactJS, AngularJS, and NodeJS",
+      "Spearheaded development of complex features, adhering to rigorous coding standards and ensuring seamless integration into existing systems",
+      "Partnered with cross-functional teams, including product managers and UX/UI designers, to translate business requirements into actionable technical solutions",
+      "Championed adoption of emerging technologies and industry trends, driving continuous improvement in development processes and practices",
+      "Effectively communicated technical concepts to both technical and non-technical stakeholders, bridging gaps and fostering team alignment on project goals",
+    ],
+  },
+  {
     id: "1",
+    companyTitle: "Freelancer",
+    positionTitle: "Fullstack Developer",
+    duration: "12/22 - 4/24",
+    location: "Remote",
+    responsibilities: [
+      "Collaborated with multiple clients to deliver high-quality frontend and backend solutions, ensuring seamless functionality and user experience.",
+      "Partnered with a VR startup to modernize their game's login flow by implementing a robust solution using Next.js.",
+      "Integrated and managed 3D models stored in S3 buckets, leveraging Three.js to enhance profile page visualizations.",
+      "Developed backend systems using Node.js for user authentication and account management, functioning as a CRM.",
+      "Successfully deployed multiple versions of a property management mobile application, ensuring scalability and reliability.",
+      "Configured Firebase Functions to automate status updates and trigger notifications in response to real-time data changes.",
+      "Utilized React Native to create a cross-platform mobile application for property management, providing a seamless user experience across iOS and Android devices.",
+    ],
+  },
+
+  {
+    id: "2",
     companyTitle: "Propstream",
     positionTitle: "Lead Frontend Developer",
-    duration: "10/20 - Present",
-    location: "Lake Forest, CA",
+    duration: "10/20 - 03/23",
+    location: "Lake Forest, CA (Remote)",
     responsibilities: [
       "Led a team of five Web Developers and one Mobile Developer in order to build both web and mobile applications from the ground up.",
       "Reviewed the code for all development and provided useful comments and industry best practices.",
@@ -16,7 +48,7 @@ export const workHistory = [
     ],
   },
   {
-    id: "2",
+    id: "3",
     companyTitle: "Cvent",
     positionTitle: "Software Developer Engineer II",
     duration: "05/18 - 10/20",
@@ -34,7 +66,7 @@ export const workHistory = [
     ],
   },
   {
-    id: "3",
+    id: "4",
     companyTitle: "Fannie Mae",
     positionTitle: "Software Developer in Test",
     duration: "05/16 - 05/18",
@@ -50,7 +82,7 @@ export const workHistory = [
     ],
   },
   {
-    id: "4",
+    id: "5",
     companyTitle: "FDM Group",
     positionTitle: "Java Developer",
     duration: "01/16 - 05/16",

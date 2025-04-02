@@ -1,11 +1,10 @@
 import React from "react";
-import styles from "@/styles/Resume.module.scss";
 import WorkHistoryTileSection from "../components/WorkHistoryTileSection";
 import { workHistory } from "../data/workHistory";
 
 const resume = () => {
   return (
-    <main className={styles.main}>
+    <main className="flex flex-col justify-between items-center p-24 min-h-screen phone:p-8">
       {workHistory.map((job) => {
         return <WorkHistoryTileSection key={`${job.id}`} job={job} />;
       })}

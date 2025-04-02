@@ -1,4 +1,3 @@
-import styles from "@/styles/Home.module.scss";
 import SkillBadge from "../components/SkillBadge";
 import { skills } from "../data/skills";
 import AboutMeTileSection from "../components/AboutMeTileSection";
@@ -7,7 +6,7 @@ import EducationTileSection from "../components/EducationTileSection";
 export default function Home() {
   return (
     <>
-      <main className={styles.main}>
+      <main className="flex flex-col justify-between items-center p-24 min-h-screen phone:p-8">
         <AboutMeTileSection />
         <EducationTileSection />
         <div className="container mt-16 flex flex-row bg-secondary rounded-3xl h-1/2 shadow-3xl">

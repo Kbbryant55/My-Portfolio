@@ -1,6 +1,18 @@
 import React from "react";
 
-const WorkHistoryTileSection = ({ job }) => {
+interface Job {
+  companyTitle: string;
+  location: string;
+  positionTitle: string;
+  duration: string;
+  responsibilities: string[];
+}
+
+interface WorkHistoryTileSectionProps {
+  job: Job;
+}
+
+const WorkHistoryTileSection = ({ job }: WorkHistoryTileSectionProps) => {
   return (
     <div className="container my-10 pr-4 flex flex-row phone:flex-col phone:items-center bg-secondary rounded-3xl shadow-3xl">
       <div className=" w-1/3 flex flex-col items-center justify-center text-white border-r-2 border-[#022C3A] phone:border-r-0 phone:border-b-2 pt-10 ">

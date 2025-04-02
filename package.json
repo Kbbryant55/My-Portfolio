@@ -29,6 +29,7 @@
     "typescript": "4.9.4"
   },
   "devDependencies": {
+    "@types/lodash": "^4.17.16",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",
     "sass": "^1.57.1",

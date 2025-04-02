@@ -1,7 +1,19 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
-const ProjectTile = ({ label, imgSrc, description, gitUrl }) => {
+interface ProjectTileProps {
+  label: string;
+  imgSrc: string;
+  description: string;
+  gitUrl: string;
+}
+
+const ProjectTile = ({
+  label,
+  imgSrc,
+  description,
+  gitUrl,
+}: ProjectTileProps) => {
   return (
     <a
       href={gitUrl}
