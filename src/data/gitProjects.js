@@ -4,7 +4,7 @@ export const gitProjects = [
     imgSrc: "React-icon.svg.png",
     label: "My Portfolio",
     description:
-      "This current websites's Git repo. I used NextJS to create this site, tailwind for a CSS framework, and deployed it on Heroku.",
+      "This current websites's Git repo. I used NextJS to create this site, tailwind for a CSS framework, and deployed it on Vercel.",
     gitUrl: "https://github.com/Kbbryant55/My-Portfolio",
   },
   {
