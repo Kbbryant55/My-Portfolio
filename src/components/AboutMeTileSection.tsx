@@ -1,12 +1,10 @@
 import React from "react";
-import Image from "next/image";
+import ProfilePicture from "./ProfilePicture";
 
 const AboutMeTileSection = () => {
   return (
     <div className="container m-auto pr-4 pt-10 flex flex-row phone:flex-col phone:items-center bg-secondary rounded-3xl h-4/5 shadow-3xl">
-      <div className="rounded-3xl overflow-hidden pl-[.75rem] m-5 w-[200px] h-[250px] relative">
-        <Image fill src={`/profilePic5.jpg`} alt={""} priority />
-      </div>
+      <ProfilePicture priority />
       <div className="pl-[2rem] w-3/4 phone:w-full ">
         <h1>About Me</h1>
         <p className="indent-8 text-white py-10 text-2xl">
