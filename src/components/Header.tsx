@@ -83,8 +83,12 @@ const Header = () => {
               aria-label="Toggle menu"
               aria-expanded={navBarOpen}
               onClick={() => setNavBarOpen(!navBarOpen)}
+              className="transition-transform duration-200 motion-safe:active:scale-95"
             >
-              <IoMdMenu size={30} />
+              <IoMdMenu
+                size={30}
+                className={`transition-transform duration-300 ${navBarOpen ? "rotate-90" : ""}`}
+              />
             </button>
           ) : (
             <>
@@ -98,7 +102,7 @@ const Header = () => {
       </div>
 
       {navBarOpen && (
-        <div className="bg-surface-form border-t border-line w-full flex flex-col items-center">
+        <div className="bg-surface-form border-t border-line w-full flex flex-col items-center motion-safe:animate-slide-down">
           <div className="w-full">
             <NavMenuItem text="Home" url="/" />
             <NavMenuItem text="Resume" url="/resume" />

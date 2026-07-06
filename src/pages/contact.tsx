@@ -89,8 +89,8 @@ const Contact = () => {
     <main className="page-shell">
       <div className="surface-form w-full max-w-lg p-10 phone:p-6">
         {isSubmitted ? (
-          <div className="flex flex-col items-center text-center py-8">
-            <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center mb-5 ring-4 ring-light/30">
+          <div className="flex flex-col items-center text-center py-8 motion-safe:animate-scale-in">
+            <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center mb-5 ring-4 ring-light/30 motion-safe:animate-scale-in">
               <svg
                 className="w-8 h-8 text-ink"
                 fill="none"
@@ -99,6 +99,7 @@ const Contact = () => {
                 aria-hidden
               >
                 <path
+                  className="[stroke-dasharray:24] [stroke-dashoffset:24] motion-safe:animate-check-draw"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2.5}

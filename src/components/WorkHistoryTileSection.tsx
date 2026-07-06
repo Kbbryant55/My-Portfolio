@@ -15,7 +15,7 @@ interface WorkHistoryTileSectionProps {
 
 const WorkHistoryTileSection = ({ job }: WorkHistoryTileSectionProps) => {
   return (
-    <SurfaceCard className="my-10 pr-4 flex flex-row phone:flex-col phone:items-center">
+    <SurfaceCard className="my-10 pr-4 flex flex-row phone:flex-col phone:items-center transition-all duration-300 motion-safe:hover:-translate-y-1 motion-safe:hover:shadow-elevated">
       <div className="w-1/3 flex flex-col items-center justify-center text-ink border-r-2 border-line-strong phone:border-r-0 phone:border-b-2 pt-10 pb-6 phone:pb-10">
         <h2 className="text-center">{job.companyTitle}</h2>
         <p className="text-meta mt-2">{job.location}</p>

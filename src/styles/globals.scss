@@ -102,7 +102,7 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-2.5 font-semibold text-ink bg-primary rounded-input cursor-pointer transition-colors duration-200;
+    @apply inline-flex items-center justify-center px-6 py-2.5 font-semibold text-ink bg-primary rounded-input cursor-pointer transition-all duration-200 motion-safe:active:scale-[0.98];
   }
 
   .btn-primary:hover {
@@ -114,7 +114,7 @@
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-2.5 font-semibold text-ink border-2 border-ink/70 rounded-input transition-colors duration-200;
+    @apply inline-flex items-center justify-center px-6 py-2.5 font-semibold text-ink border-2 border-ink/70 rounded-input transition-all duration-200 motion-safe:active:scale-[0.98];
   }
 
   .btn-secondary:hover {
@@ -153,5 +153,30 @@
 @layer utilities {
   .page-shell {
     @apply flex flex-col items-center min-h-screen px-6 py-16 phone:px-5 phone:py-10;
+  }
+
+  /* Staggered entrance — invisible only when animating; visible if reduced motion */
+  .animate-enter {
+    @apply motion-safe:opacity-0 motion-safe:animate-fade-in-up;
+  }
+
+  .animate-enter-delay-1 {
+    animation-delay: 100ms;
+  }
+
+  .animate-enter-delay-2 {
+    animation-delay: 200ms;
+  }
+
+  .animate-enter-delay-3 {
+    animation-delay: 300ms;
+  }
+
+  .animate-enter-delay-4 {
+    animation-delay: 400ms;
+  }
+
+  .animate-enter-delay-5 {
+    animation-delay: 500ms;
   }
 }
