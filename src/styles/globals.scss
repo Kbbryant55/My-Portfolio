@@ -11,6 +11,7 @@
 
   --color-surface-card: #bc6a43;
   --color-surface-form: rgba(2, 44, 58, 0.92);
+  --color-surface-contact: #faf8f5;
   --color-surface-input: rgba(255, 255, 255, 0.06);
 
   --color-ink: #ffffff;
@@ -93,6 +94,36 @@
     @apply bg-surface-form rounded-form shadow-form border border-line;
   }
 
+  /* Contact page — off-white panel */
+  .contact-panel {
+    @apply bg-surface-contact rounded-form shadow-elevated border border-dark/10 text-dark;
+  }
+
+  .contact-panel h2,
+  .contact-panel h3 {
+    @apply text-dark;
+  }
+
+  .contact-panel .text-body {
+    @apply text-dark/75;
+  }
+
+  .contact-panel .text-meta {
+    @apply text-dark/60;
+  }
+
+  .contact-panel .input-field {
+    @apply bg-white border-dark/20 text-dark placeholder:text-dark/40;
+  }
+
+  .contact-panel .input-field:focus {
+    @apply ring-2 ring-primary/40 border-primary/50 bg-white;
+  }
+
+  .contact-panel .btn-primary:focus-visible {
+    @apply ring-offset-surface-contact;
+  }
+
   .input-field {
     @apply w-full rounded-input bg-surface-input border border-line-field text-ink placeholder:text-ink-subtle px-3 py-2.5 outline-none transition-shadow duration-200;
   }
@@ -125,6 +156,18 @@
     @apply outline-none ring-2 ring-light/50 ring-offset-2 ring-offset-dark;
   }
 
+  .btn-icon {
+    @apply inline-flex items-center justify-center p-2 bg-transparent border-0 cursor-pointer text-ink;
+  }
+
+  .btn-icon:hover {
+    @apply text-light;
+  }
+
+  .btn-icon:focus-visible {
+    @apply outline-none ring-2 ring-light/50 rounded-input;
+  }
+
   .hero-title {
     @apply font-display text-5xl phone:text-4xl font-bold tracking-tight text-ink;
   }
@@ -155,9 +198,17 @@
     @apply flex flex-col items-center min-h-screen px-6 py-16 phone:px-5 phone:py-10;
   }
 
-  /* Staggered entrance — invisible only when animating; visible if reduced motion */
+  /* Staggered entrance — keyframes handle opacity; `both` holds 0% state during delay */
   .animate-enter {
-    @apply motion-safe:opacity-0 motion-safe:animate-fade-in-up;
+    @apply motion-safe:animate-fade-in-up;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-enter {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
   }
 
   .animate-enter-delay-1 {

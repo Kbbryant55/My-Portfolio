@@ -14,6 +14,7 @@ const tokens = {
       card: "#BC6A43",
       "card-hover": "#896147",
       form: "rgba(2, 44, 58, 0.92)",
+      contact: "#FAF8F5",
       input: "rgba(255, 255, 255, 0.06)",
     },
 

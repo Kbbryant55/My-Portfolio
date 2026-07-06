@@ -1,50 +1,47 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { IoLogoInstagram, IoLogoLinkedin, IoMdMenu } from "react-icons/io";
 
 interface NavMenuItemProps {
   text: string;
   url: string;
+  onNavigate?: () => void;
 }
 
-const NavMenuItem = ({ text, url }: NavMenuItemProps) => (
-  <Link
-    className="flex flex-col items-center pb-[13px] cursor-pointer text-ink no-underline group"
-    href={url}
-  >
-    <div className="py-[25px] px-[18px] pb-2 group-hover:text-light transition-colors duration-200">
-      {text}
-    </div>
-    <div className="bg-light h-[3px] w-0 transition-all duration-300 ease-in-out group-hover:w-full" />
-  </Link>
-);
+const NavMenuItem = ({ text, url, onNavigate }: NavMenuItemProps) => {
+  const router = useRouter();
+  const isActive = router.pathname === url;
+
+  return (
+    <Link
+      className="flex flex-col items-center pb-[13px] cursor-pointer text-ink no-underline group"
+      href={url}
+      onClick={onNavigate}
+    >
+      <div
+        className={`py-[25px] px-[18px] pb-2 transition-colors duration-200 ${
+          isActive ? "text-light" : "group-hover:text-light"
+        }`}
+      >
+        {text}
+      </div>
+      <div
+        className={`bg-light h-[3px] transition-all duration-300 ease-in-out ${
+          isActive ? "w-full" : "w-0 group-hover:w-full"
+        }`}
+      />
+    </Link>
+  );
+};
 
 const Header = () => {
   const [navBarOpen, setNavBarOpen] = useState(false);
-  const [width, setWidth] = useState(0);
-  const [mounted, setMounted] = useState(false);
-  const breakpoint = 970;
 
-  useEffect(() => {
-    setMounted(true);
-    setWidth(window.innerWidth);
-    const handleWindowResize = () => setWidth(window.innerWidth);
-    window.addEventListener("resize", handleWindowResize);
-    return () => window.removeEventListener("resize", handleWindowResize);
-  }, []);
-
-  useEffect(() => {
-    if (width > breakpoint) setNavBarOpen(false);
-  }, [width]);
-
-  if (!mounted) {
-    return (
-      <header className="h-[7.5rem]" aria-hidden />
-    );
-  }
+  const closeMenu = () => setNavBarOpen(false);
 
   return (
-    <header>
+    <header className="relative z-50 w-full overflow-visible">
       <div className="flex justify-end px-20 pt-10 phone:px-5">
         <div className="flex flex-row gap-4 w-[6rem] justify-between">
           <a
@@ -73,43 +70,50 @@ const Header = () => {
       </div>
 
       <div className="flex flex-row justify-between items-center px-20 phone:px-5">
-        <p className="font-display font-bold text-xl cursor-pointer hover:text-light transition-colors duration-200">
-          <Link href="/">Kenny&apos;s Portfolio</Link>
+        <p className="font-display font-bold text-xl text-ink">
+          <Link href="/" className="hover:text-light transition-colors duration-200">
+            Kenny&apos;s Portfolio
+          </Link>
         </p>
-        <nav className="flex px-10 phone:px-2 text-ink p-8 items-center justify-end w-1/3">
-          {width < breakpoint ? (
-            <button
-              type="button"
-              aria-label="Toggle menu"
-              aria-expanded={navBarOpen}
-              onClick={() => setNavBarOpen(!navBarOpen)}
-              className="transition-transform duration-200 motion-safe:active:scale-95"
-            >
-              <IoMdMenu
-                size={30}
-                className={`transition-transform duration-300 ${navBarOpen ? "rotate-90" : ""}`}
-              />
-            </button>
-          ) : (
-            <>
-              <NavMenuItem text="Home" url="/" />
-              <NavMenuItem text="Resume" url="/resume" />
-              <NavMenuItem text="Projects" url="/projects" />
-              <NavMenuItem text="Contact" url="/contact" />
-            </>
-          )}
+
+        {/* Desktop nav — hidden below 970px via CSS, no JS width check */}
+        <nav className="hidden min-[971px]:flex px-10 text-ink p-8 items-center justify-end w-1/3">
+          <NavMenuItem text="Home" url="/" />
+          <NavMenuItem text="Resume" url="/resume" />
+          <NavMenuItem text="Projects" url="/projects" />
+          <NavMenuItem text="Contact" url="/contact" />
         </nav>
+
+        {/* Mobile menu button */}
+        <div className="flex min-[971px]:hidden px-2 p-8 items-center justify-end text-ink relative z-50">
+          <button
+            type="button"
+            aria-label={navBarOpen ? "Close menu" : "Open menu"}
+            aria-expanded={navBarOpen}
+            aria-controls="mobile-nav"
+            onClick={() => setNavBarOpen((open) => !open)}
+            className="btn-icon"
+          >
+            <IoMdMenu
+              size={30}
+              className={`transition-transform duration-300 ${navBarOpen ? "rotate-90" : ""}`}
+            />
+          </button>
+        </div>
       </div>
 
       {navBarOpen && (
-        <div className="bg-surface-form border-t border-line w-full flex flex-col items-center motion-safe:animate-slide-down">
-          <div className="w-full">
-            <NavMenuItem text="Home" url="/" />
-            <NavMenuItem text="Resume" url="/resume" />
-            <NavMenuItem text="Projects" url="/projects" />
-            <NavMenuItem text="Contact" url="/contact" />
+        <nav
+          id="mobile-nav"
+          className="min-[971px]:hidden w-full border-t border-line bg-surface-form shadow-elevated"
+        >
+          <div className="w-full flex flex-col items-center py-2">
+            <NavMenuItem text="Home" url="/" onNavigate={closeMenu} />
+            <NavMenuItem text="Resume" url="/resume" onNavigate={closeMenu} />
+            <NavMenuItem text="Projects" url="/projects" onNavigate={closeMenu} />
+            <NavMenuItem text="Contact" url="/contact" onNavigate={closeMenu} />
           </div>
-        </div>
+        </nav>
       )}
     </header>
   );
