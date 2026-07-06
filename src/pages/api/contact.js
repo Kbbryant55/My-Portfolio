@@ -1,3 +1,4 @@
+import React from "react";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 
@@ -8,20 +9,11 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: "Method not allowed" });
   }
 
-  const { contactName, contactEmail, contactPhone, contactMessage } = req.body || {};
-  if (!contactName || !contactEmail || !contactPhone || !contactMessage) {
-    return res.status(400).json({ message: "Missing required fields" });
-  }
-
-  const password = process.env.PASSWORD;
-  const dummyEmail = process.env.DUMMYEMAIL;
-  const email = process.env.EMAIL;
-  if (!password || !dummyEmail || !email) {
-    console.error("Contact API: missing env (PASSWORD, DUMMYEMAIL, EMAIL)");
-    return res.status(500).json({ message: "Server configuration error" });
-  }
-
   try {
+    const password = process.env.PASSWORD;
+    const dummyEmail = process.env.DUMMYEMAIL;
+    const email = process.env.EMAIL;
+
     const transporter = nodemailer.createTransport({
       port: 465,
       host: "smtp.gmail.com",
@@ -35,14 +27,15 @@ export default async function handler(req, res) {
     const mailData = {
       from: dummyEmail,
       to: email,
-      subject: `Message From ${contactName}`,
+      subject: `Message From ${req.body.contactName}`,
       text:
-        contactMessage +
+        req.body.contactMessage +
         " | Sent from: " +
-        contactEmail +
+        req.body.contactEmail +
         " | Call at: " +
-        contactPhone,
-      html: `<div>${contactMessage}</div><p>Sent from: ${contactEmail}</p><p>Call at ${contactPhone}</p>`,
+        req.body.contactPhone,
+      html: `<div>${req.body.contactMessage}</div><p>Sent from:
+      ${req.body.contactEmail}</p><p>Call at ${req.body.contactPhone} </p>`,
     };
     await transporter.sendMail(mailData);
 

@@ -1,13 +1,14 @@
 import React from "react";
 import ProfilePicture from "./ProfilePicture";
+import SurfaceCard from "./SurfaceCard";
 
 const AboutMeTileSection = () => {
   return (
-    <div className="container m-auto pr-4 pt-10 flex flex-row phone:flex-col phone:items-center bg-secondary rounded-3xl h-4/5 shadow-3xl">
+    <SurfaceCard className="m-auto pr-4 pt-10 flex flex-row phone:flex-col phone:items-center">
       <ProfilePicture priority />
-      <div className="pl-[2rem] w-3/4 phone:w-full ">
-        <h1>About Me</h1>
-        <p className="indent-8 text-white py-10 text-2xl">
+      <div className="pl-8 w-3/4 phone:w-full phone:pl-0 phone:px-4">
+        <h2 className="section-title">About Me</h2>
+        <p className="text-body py-6 phone:py-5">
           I am a Senior Software Developer who is comfortable working with both
           front-end and back-end technologies. My expertise, however, lies in
           both React web development and React Native mobile applications. I
@@ -22,7 +23,7 @@ const AboutMeTileSection = () => {
           reality startup.
         </p>
       </div>
-    </div>
+    </SurfaceCard>
   );
 };
 

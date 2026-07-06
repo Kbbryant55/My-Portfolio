@@ -1,4 +1,5 @@
 import React from "react";
+import SurfaceCard from "./SurfaceCard";
 
 interface Job {
   companyTitle: string;
@@ -14,28 +15,26 @@ interface WorkHistoryTileSectionProps {
 
 const WorkHistoryTileSection = ({ job }: WorkHistoryTileSectionProps) => {
   return (
-    <div className="container my-10 pr-4 flex flex-row phone:flex-col phone:items-center bg-secondary rounded-3xl shadow-3xl">
-      <div className=" w-1/3 flex flex-col items-center justify-center text-white border-r-2 border-[#022C3A] phone:border-r-0 phone:border-b-2 pt-10 ">
-        <h2 className="text-white text-3xl">{job.companyTitle}</h2>
-        <p>{job.location}</p>
+    <SurfaceCard className="my-10 pr-4 flex flex-row phone:flex-col phone:items-center">
+      <div className="w-1/3 flex flex-col items-center justify-center text-ink border-r-2 border-line-strong phone:border-r-0 phone:border-b-2 pt-10 pb-6 phone:pb-10">
+        <h2 className="text-center">{job.companyTitle}</h2>
+        <p className="text-meta mt-2">{job.location}</p>
       </div>
 
-      <div className="flex flex-col flex-wrap px-10 phone:px-1 pb-10 w-2/3">
-        <div className="flex flex-row justify-between w-full text-white py-10">
-          <h2 className="text-3xl">{job.positionTitle}</h2>
-          <p>{job.duration}</p>
+      <div className="flex flex-col flex-wrap px-10 phone:px-6 pb-10 w-2/3 phone:w-full">
+        <div className="flex flex-row phone:flex-col phone:gap-2 justify-between w-full py-8">
+          <h3>{job.positionTitle}</h3>
+          <p className="text-meta shrink-0">{job.duration}</p>
         </div>
-        <ul>
-          {job.responsibilities.map((task, index) => {
-            return (
-              <li key={`${index}-${task}`} className="text-white">
-                {task}
-              </li>
-            );
-          })}
+        <ul className="space-y-2 pl-5">
+          {job.responsibilities.map((task, index) => (
+            <li key={`${index}-${task}`} className="text-body text-base">
+              {task}
+            </li>
+          ))}
         </ul>
       </div>
-    </div>
+    </SurfaceCard>
   );
 };
 

@@ -1,45 +1,57 @@
 /** @type {import('tailwindcss').Config} */
 const colors = require("tailwindcss/colors");
+const tokens = require("./src/styles/tokens");
 
 module.exports = {
-  content: [
-    // using `src` directory:
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: "1rem",
+        phone: "1.25rem",
+      },
+      screens: {
+        DEFAULT: "100%",
+        lg: "1100px",
+      },
+    },
     extend: {
       colors: {
-        primary: "#896147",
-        secondary: "#BC6A43",
-        light: "#FEBF7A",
-        dark: "#022C3A",
-        font: "#6c6c6c",
-        border: "#ccc",
+        primary: tokens.colors.primary,
+        secondary: tokens.colors.secondary,
+        light: tokens.colors.light,
+        dark: tokens.colors.dark,
+        surface: tokens.colors.surface,
+        ink: tokens.colors.ink,
+        line: tokens.colors.line,
         transparent: "transparent",
         current: "currentColor",
         black: colors.black,
         white: colors.white,
-        gray: colors.gray,
-        emerald: colors.emerald,
-        indigo: colors.indigo,
-        yellow: colors.yellow,
       },
       fontFamily: {
-        display: ["Oswald"],
-        body: ['"Open Sans"'],
+        display: ["var(--font-display)", "Oswald", "sans-serif"],
+        body: ["var(--font-body)", "Open Sans", "sans-serif"],
       },
       backgroundImage: {
         mosaic: "url('../../public/background-1.jpg')",
+        scrim:
+          "linear-gradient(to bottom, rgba(2, 44, 58, 0.72), rgba(2, 44, 58, 0.88))",
+      },
+      boxShadow: tokens.boxShadow,
+      borderRadius: {
+        card: tokens.borderRadius.card,
+        form: tokens.borderRadius.form,
+        input: tokens.borderRadius.input,
       },
       screens: {
         phone: { max: "576px" },
-
         laptop: { max: "960px" },
-
         desktop: { max: "1440px" },
       },
-      boxShadow: {
-        "3xl": "0 35px 60px -15px rgba(0, 0, 0, 0.75)",
+      transitionDuration: {
+        DEFAULT: "200ms",
       },
     },
   },

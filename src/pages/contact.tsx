@@ -19,7 +19,7 @@ const Contact = () => {
 
   const handleOnSubmit = () => {
     if (validateForm()) {
-      let data = {
+      const data = {
         contactName,
         contactEmail,
         contactPhone,
@@ -34,12 +34,10 @@ const Contact = () => {
         body: JSON.stringify(data),
       })
         .then((response) => {
-          if (response.ok) {
-            return response.json();
-          }
+          if (response.ok) return response.json();
           throw new Error("Network response was not ok");
         })
-        .then((data) => {
+        .then(() => {
           setContactName("");
           setContactEmail("");
           setContactPhone("");
@@ -74,38 +72,31 @@ const Contact = () => {
   const validateForm = () => {
     const formErrors: FormErrors = {};
 
-    if (!contactName.trim()) {
-      formErrors.contactName = "Please enter your name.";
-    }
-    if (!contactEmail.trim()) {
-      formErrors.contactEmail = "Please enter your email.";
-    } else if (!validateEmail(contactEmail)) {
+    if (!contactName) formErrors.contactName = "Please enter your name.";
+    if (!contactEmail) formErrors.contactEmail = "Please enter your email.";
+    else if (!validateEmail(contactEmail))
       formErrors.contactEmail = "Please enter a valid email.";
-    }
-    if (!contactPhone.trim()) {
-      formErrors.contactPhone = "Please enter your phone number.";
-    } else if (!validatePhone(contactPhone)) {
+    if (!contactPhone) formErrors.contactPhone = "Please enter your phone number.";
+    else if (!validatePhone(contactPhone))
       formErrors.contactPhone = "Please enter a valid phone number.";
-    }
-    if (!contactMessage.trim()) {
-      formErrors.contactMessage = "Please enter a message.";
-    }
+    if (!contactMessage) formErrors.contactMessage = "Please enter a message";
 
     setErrors(formErrors);
     return _.isEmpty(formErrors);
   };
 
   return (
-    <main className="flex flex-col justify-between items-center p-24 min-h-screen phone:p-8">
-      {isSubmitted ? (
-        <div className="max-w-[40rem] min-w-[15rem] w-3/5 p-20 rounded-[2rem] bg-[rgb(248,248,248)] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] phone:p-8">
-          <div className="flex flex-col items-center text-center">
-            <div className="w-14 h-14 rounded-full bg-secondary flex items-center justify-center mb-4">
+    <main className="page-shell">
+      <div className="surface-form w-full max-w-lg p-10 phone:p-6">
+        {isSubmitted ? (
+          <div className="flex flex-col items-center text-center py-8">
+            <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center mb-5 ring-4 ring-light/30">
               <svg
-                className="w-8 h-8 text-white"
+                className="w-8 h-8 text-ink"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                aria-hidden
               >
                 <path
                   strokeLinecap="round"
@@ -115,80 +106,91 @@ const Contact = () => {
                 />
               </svg>
             </div>
-            <h2 className="text-xl font-semibold text-dark mb-2">
-              Message sent
-            </h2>
-            <p className="text-[1.1rem] text-dark/90">
+            <h2 className="mb-3">Message sent</h2>
+            <p className="text-body">
               Thank you for reaching out! I will be in contact with you soon.
             </p>
           </div>
-        </div>
-      ) : (
-        <div className="max-w-[40rem] min-w-[15rem] w-3/5 h-3/5 p-20 rounded-[2rem] bg-[rgb(248,248,248)] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] phone:p-8">
-          <div className="font-medium text-xl tracking-tight leading-5 text-center text-dark py-5 px-10 phone:text-base phone:text-xs">
-            Please fill out the form below
-          </div>
-          <div className="space-y-4">
-            <div className="font-normal text-lg leading-5 text-left text-dark pb-2.5 phone:text-base phone:text-xs">
-              <div className="pb-2">Name</div>
-              <input
-                className="w-full rounded-lg bg-white border border-[#dadfe7] pb-[15px]"
-                value={contactName}
-                onChange={(e) => setContactName(e.target.value)}
-              />
-              {errors.contactName && (
-                <div className="text-red-500">{errors.contactName}</div>
+        ) : (
+          <>
+            <h2 className="text-center mb-2">Get in touch</h2>
+            <p className="text-body text-center mb-8">
+              Please fill out the form below and I&apos;ll get back to you.
+            </p>
+            <div className="space-y-5">
+              <div>
+                <label className="block text-meta mb-2" htmlFor="contactName">
+                  Name
+                </label>
+                <input
+                  id="contactName"
+                  className="input-field"
+                  value={contactName}
+                  onChange={(e) => setContactName(e.target.value)}
+                />
+                {errors.contactName && (
+                  <p className="text-red-400 text-sm mt-1">{errors.contactName}</p>
+                )}
+              </div>
+              <div>
+                <label className="block text-meta mb-2" htmlFor="contactEmail">
+                  Email
+                </label>
+                <input
+                  id="contactEmail"
+                  type="email"
+                  className="input-field"
+                  value={contactEmail}
+                  onChange={(e) => setContactEmail(e.target.value)}
+                />
+                {errors.contactEmail && (
+                  <p className="text-red-400 text-sm mt-1">{errors.contactEmail}</p>
+                )}
+              </div>
+              <div>
+                <label className="block text-meta mb-2" htmlFor="contactPhone">
+                  Phone
+                </label>
+                <input
+                  id="contactPhone"
+                  type="tel"
+                  className="input-field"
+                  value={contactPhone}
+                  onChange={(e) => setContactPhone(e.target.value)}
+                />
+                {errors.contactPhone && (
+                  <p className="text-red-400 text-sm mt-1">{errors.contactPhone}</p>
+                )}
+              </div>
+              <div>
+                <label className="block text-meta mb-2" htmlFor="contactMessage">
+                  Message
+                </label>
+                <textarea
+                  id="contactMessage"
+                  className="input-field min-h-[8rem]"
+                  value={contactMessage}
+                  rows={6}
+                  onChange={(e) => setContactMessage(e.target.value)}
+                />
+                {errors.contactMessage && (
+                  <p className="text-red-400 text-sm mt-1">{errors.contactMessage}</p>
+                )}
+              </div>
+              {errors.submit && (
+                <p className="text-red-400 text-sm text-center">{errors.submit}</p>
               )}
-            </div>
-            <div className="font-normal text-lg leading-5 text-left text-dark pb-2.5 phone:text-base phone:text-xs">
-              <div className="pb-2">Email</div>
-              <input
-                className="w-full rounded-lg bg-white border border-[#dadfe7] pb-[15px]"
-                value={contactEmail}
-                onChange={(e) => setContactEmail(e.target.value)}
-              />
-              {errors.contactEmail && (
-                <div className="text-red-500">{errors.contactEmail}</div>
-              )}
-            </div>
-            <div className="font-normal text-lg leading-5 text-left text-dark pb-2.5 phone:text-base phone:text-xs">
-              <div className="pb-2">Phone</div>
-              <input
-                className="w-full rounded-lg bg-white border border-[#dadfe7] pb-[15px]"
-                value={contactPhone}
-                onChange={(e) => setContactPhone(e.target.value)}
-              />
-              {errors.contactPhone && (
-                <div className="text-red-500">{errors.contactPhone}</div>
-              )}
-            </div>
-            <div className="font-normal text-lg leading-5 text-left text-dark pb-2.5 phone:text-base phone:text-xs">
-              <div className="pb-2">Message</div>
-              <textarea
-                className="w-full rounded-lg bg-white border border-[#dadfe7]"
-                value={contactMessage}
-                rows={8}
-                onChange={(e) => setContactMessage(e.target.value)}
-              />
-              {errors.contactMessage && (
-                <div className="text-red-500">{errors.contactMessage}</div>
-              )}
-            </div>
-            {errors.submit && (
-              <div className="text-red-500 text-sm">{errors.submit}</div>
-            )}
-            <div className="px-10 py-2.5">
               <button
                 type="button"
                 onClick={handleOnSubmit}
-                className="flex justify-center items-center w-full text-center"
+                className="btn-primary w-full"
               >
                 Contact Me
               </button>
             </div>
-          </div>
-        </div>
-      )}
+          </>
+        )}
+      </div>
     </main>
   );
 };
