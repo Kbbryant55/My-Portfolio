@@ -9,8 +9,11 @@ const HeroSection = () => {
       <p className="text-meta uppercase tracking-[0.2em] mb-4 animate-enter">
         Portfolio
       </p>
-      <h1 id="hero-heading" className="hero-title animate-enter animate-enter-delay-1">
-        Kenneth Willoughby
+      <h1
+        id="hero-heading"
+        className="hero-title animate-enter animate-enter-delay-1"
+      >
+        Kenny Willoughby
       </h1>
       <p className="hero-role animate-enter animate-enter-delay-2">
         Senior Software Developer
