@@ -24,7 +24,7 @@ const HeroSection = () => {
         launch.
       </p>
       <p className="text-meta mt-3 animate-enter animate-enter-delay-4">
-        Full-stack · Team leadership · Mentorship
+        Full-stack · Maps · Payments · Mentorship
       </p>
       <div className="flex gap-4 justify-center mt-10 flex-wrap animate-enter animate-enter-delay-5">
         <Link href="/contact" className="btn-primary">
