@@ -5,18 +5,18 @@ interface ProjectTileProps {
   label: string;
   imgSrc: string;
   description: string;
-  gitUrl: string;
+  projectUrl: string;
 }
 
 const ProjectTile = ({
   label,
   imgSrc,
   description,
-  gitUrl,
+  projectUrl,
 }: ProjectTileProps) => {
   return (
     <a
-      href={gitUrl}
+      href={projectUrl}
       target="_blank"
       rel="noopener noreferrer"
       className="group block w-[20rem] rounded-card bg-surface-card shadow-card hover:bg-surface-card-hover hover:shadow-elevated hover:scale-[1.02] transition-all duration-300 overflow-hidden border border-line"

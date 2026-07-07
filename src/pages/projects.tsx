@@ -1,5 +1,5 @@
 import React from "react";
-import { gitProjects } from "../data/gitProjects";
+import { projects } from "../data/projects";
 import ProjectTile from "../components/ProjectTile";
 
 const Projects = () => {
@@ -7,13 +7,13 @@ const Projects = () => {
     <main className="page-shell">
       <h1 className="w-full max-w-5xl mb-10">Projects</h1>
       <div className="flex flex-row flex-wrap justify-center gap-6">
-        {gitProjects.map((project) => (
+        {projects.map((project) => (
           <ProjectTile
             key={project.id}
             label={project.label}
             imgSrc={project.imgSrc}
             description={project.description}
-            gitUrl={project.gitUrl}
+            projectUrl={project.projectUrl}
           />
         ))}
       </div>
