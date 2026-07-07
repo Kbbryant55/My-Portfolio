@@ -29,6 +29,13 @@ const HeroSection = () => {
         <Link href="/contact" className="btn-primary">
           Get in touch
         </Link>
+        <a
+          href="/Kenneth-Willoughby-Resume.pdf"
+          download
+          className="btn-secondary"
+        >
+          Download resume
+        </a>
         <Link href="/projects" className="btn-secondary">
           View projects
         </Link>
