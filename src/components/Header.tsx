@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { IoLogoInstagram, IoLogoLinkedin, IoMdMenu } from "react-icons/io";
+import {
+  IoLogoInstagram,
+  IoLogoLinkedin,
+  IoLogoGithub,
+  IoMdMenu,
+} from "react-icons/io";
 
 interface NavMenuItemProps {
   text: string;
@@ -56,6 +61,17 @@ const Header = () => {
             />
           </a>
           <a
+            href="https://github.com/Kbbryant55"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+          >
+            <IoLogoGithub
+              size={30}
+              className="text-ink hover:text-light transition-colors duration-200"
+            />
+          </a>
+          <a
             href="https://www.instagram.com/kennywillough/"
             target="_blank"
             rel="noopener noreferrer"
@@ -71,13 +87,16 @@ const Header = () => {
 
       <div className="flex flex-row justify-between items-center px-20 phone:px-5">
         <p className="font-display font-bold text-xl text-ink">
-          <Link href="/" className="hover:text-light transition-colors duration-200">
+          <Link
+            href="/"
+            className="hover:text-light transition-colors duration-200"
+          >
             Kenny&apos;s Portfolio
           </Link>
         </p>
 
-        {/* Desktop nav — hidden below 970px via CSS, no JS width check */}
-        <nav className="hidden min-[971px]:flex px-10 text-ink p-8 items-center justify-end w-1/3">
+        {/* Desktop nav — hidden at laptop breakpoint (<=960px) and below */}
+        <nav className="flex laptop:hidden px-10 text-ink p-8 items-center justify-end w-1/3">
           <NavMenuItem text="Home" url="/" />
           <NavMenuItem text="Resume" url="/resume" />
           <NavMenuItem text="Projects" url="/projects" />
@@ -85,7 +104,7 @@ const Header = () => {
         </nav>
 
         {/* Mobile menu button */}
-        <div className="flex min-[971px]:hidden px-2 p-8 items-center justify-end text-ink relative z-50">
+        <div className="hidden laptop:flex px-2 p-8 items-center justify-end text-ink relative z-50">
           <button
             type="button"
             aria-label={navBarOpen ? "Close menu" : "Open menu"}
@@ -105,12 +124,16 @@ const Header = () => {
       {navBarOpen && (
         <nav
           id="mobile-nav"
-          className="min-[971px]:hidden w-full border-t border-line bg-surface-form shadow-elevated"
+          className="hidden laptop:block w-full border-t border-line bg-surface-form shadow-elevated"
         >
           <div className="w-full flex flex-col items-center py-2">
             <NavMenuItem text="Home" url="/" onNavigate={closeMenu} />
             <NavMenuItem text="Resume" url="/resume" onNavigate={closeMenu} />
-            <NavMenuItem text="Projects" url="/projects" onNavigate={closeMenu} />
+            <NavMenuItem
+              text="Projects"
+              url="/projects"
+              onNavigate={closeMenu}
+            />
             <NavMenuItem text="Contact" url="/contact" onNavigate={closeMenu} />
           </div>
         </nav>
